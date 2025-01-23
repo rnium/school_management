@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="student_h_1" model="school_management.student">
+        <field name="weight_in_kg">60</field>
+    </record>
+    <record id="student_h_2" model="school_management.student">
+        <field name="weight_in_kg">70</field>
+    </record>
+    <record id="student_h_3" model="school_management.student">
+        <field name="weight_in_kg">80</field>
+    </record>
+    <record id="student_h_4" model="school_management.student">
+        <field name="weight_in_kg">90</field>
+    </record>
+    <record id="student_h_5" model="school_management.student">
+        <field name="weight_in_kg">71</field>
+    </record>
+    <record id="student_16" model="school_management.student">
+        <field name="weight_in_kg">45</field>
+    </record>
+    <record id="student_17" model="school_management.student">
+        <field name="weight_in_kg">72</field>
+    </record>
+    <record id="student_18" model="school_management.student">
+        <field name="weight_in_kg">63</field>
+    </record>
+    <record id="student_19" model="school_management.student">
+        <field name="weight_in_kg">50</field>
+    </record>
+    <record id="student_20" model="school_management.student">
+        <field name="weight_in_kg">84</field>
+    </record>
+    <record id="student_21" model="school_management.student">
+        <field name="weight_in_kg">59</field>
+    </record>
+    <record id="student_22" model="school_management.student">
+        <field name="weight_in_kg">78</field>
+    </record>
+    <record id="student_23" model="school_management.student">
+        <field name="weight_in_kg">67</field>
+    </record>
+    <record id="student_24" model="school_management.student">
+        <field name="weight_in_kg">90</field>
+    </record>
+    <record id="student_25" model="school_management.student">
+        <field name="weight_in_kg">53</field>
+    </record>
+    <record id="student_26" model="school_management.student">
+        <field name="weight_in_kg">74</field>
+    </record>
+    <record id="student_27" model="school_management.student">
+        <field name="weight_in_kg">47</field>
+    </record>
+    <record id="student_28" model="school_management.student">
+        <field name="weight_in_kg">88</field>
+    </record>
+    <record id="student_29" model="school_management.student">
+        <field name="weight_in_kg">61</field>
+    </record>
+    <record id="student_30" model="school_management.student">
+        <field name="weight_in_kg">49</field>
+    </record>
+    <record id="student_31" model="school_management.student">
+        <field name="weight_in_kg">71</field>
+    </record>
+    <record id="student_32" model="school_management.student">
+        <field name="weight_in_kg">57</field>
+    </record>
+    <record id="student_33" model="school_management.student">
+        <field name="weight_in_kg">83</field>
+    </record>
+    <record id="student_34" model="school_management.student">
+        <field name="weight_in_kg">64</field>
+    </record>
+    <record id="student_35" model="school_management.student">
+        <field name="weight_in_kg">76</field>
+    </record>
+    <record id="student_36" model="school_management.student">
+        <field name="weight_in_kg">42</field>
+    </record>
+    <record id="student_37" model="school_management.student">
+        <field name="weight_in_kg">87</field>
+    </record>
+    <record id="student_38" model="school_management.student">
+        <field name="weight_in_kg">60</field>
+    </record>
+    <record id="student_39" model="school_management.student">
+        <field name="weight_in_kg">55</field>
+    </record>
+    <record id="student_40" model="school_management.student">
+        <field name="weight_in_kg">91</field>
+    </record>
+    <record id="student_41" model="school_management.student">
+        <field name="weight_in_kg">46</field>
+    </record>
+    <record id="student_42" model="school_management.student">
+        <field name="weight_in_kg">69</field>
+    </record>
+    <record id="student_43" model="school_management.student">
+        <field name="weight_in_kg">58</field>
+    </record>
+    <record id="student_44" model="school_management.student">
+        <field name="weight_in_kg">81</field>
+    </record>
+    <record id="student_45" model="school_management.student">
+        <field name="weight_in_kg">75</field>
+    </record>
+    <record id="student_46" model="school_management.student">
+        <field name="weight_in_kg">41</field>
+    </record>
+    <record id="student_47" model="school_management.student">
+        <field name="weight_in_kg">93</field>
+    </record>
+    <record id="student_48" model="school_management.student">
+        <field name="weight_in_kg">62</field>
+    </record>
+    <record id="student_49" model="school_management.student">
+        <field name="weight_in_kg">66</field>
+    </record>
+    <record id="student_50" model="school_management.student">
+        <field name="weight_in_kg">79</field>
+    </record>
+</odoo>

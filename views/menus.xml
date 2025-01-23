@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+            id="school_management_menu"
+            name="School Management"
+            sequence="10"
+            web_icon="school_management,static/description/icon.png"
+    />
+
+    <menuitem id="school_management_school_menu" name="School" parent="school_management_menu"
+                action="school_management_school_action" sequence="5"/>
+    <menuitem id="school_management_student_menu" name="Student" parent="school_management_menu">
+        <menuitem
+                id="school_management_simple_student_menu"
+                name="Student"
+                action="school_management_student_action"
+                sequence="10"
+        />
+        <menuitem
+            id="school_management_detailed_student_menu"
+            name="Detailed Student"
+            action="school_management_student_detailed_action"
+            sequence="20"
+        />
+    </menuitem>
+    <menuitem id="school_management_parent_menu" name="Parent" parent="school_management_menu"
+              action="school_management_parent_action" sequence="12" />
+    <menuitem id="school_management_result_menu" name="Result" parent="school_management_menu"
+                action="school_management_result_action" sequence="20"/>
+    <menuitem id="school_management_course_menu" name="Course" parent="school_management_menu"
+                action="school_management_course_action" sequence="30"/>
+    <menuitem id="school_management_library_menu" name="Library" parent="school_management_menu"
+                action="school_management_library_action" sequence="40"/>
+    <menuitem id="school_management_student_weight_menu" name="Student Weight" parent="school_management_menu"
+                action="school_management_weight_wizard_action" sequence="50"/>
+    <menuitem id="school_management_setting_menu" name="Settings" parent="school_management_menu"
+                action="school_management_setting_action" sequence="60"/>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="school_management_setting_view_form" model="ir.ui.view">
+        <field name="name">school_management.setting.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="School Mgmt" string="School Management" name="school_management">
+                    <block title="School Configuration">
+                        <setting id="seat_capacity" help="Set the seat capacity of the school">
+                            <field name="max_number_of_students" string="Seat Capacity"/>
+                        </setting>
+                        <setting id="max_student_age_setting" help="Set the max student age">
+                            <field name="max_student_age" string="Max Age"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="school_management_setting_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'school_management', 'bin_size': False}</field>
+    </record>
+</odoo>

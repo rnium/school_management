@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="portal_schools" inherit_id="portal.portal_my_home">
+            <xpath expr="//div[@id='portal_vendor_category']" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/sale/static/src/img/bag.svg'" />
+                    <t t-set="title" t-value="'Schools'" />
+                    <t t-set="description" t-value="'Manage Schools'" />
+                    <t t-set="url" t-value="'/my/school'" />
+                    <t t-set="text">View Schools</t>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_school_list_view_breadcrumb" inherit_id="portal.portal_breadcrumbs">
+            <xpath expr="//ol[hasclass('breadcrumb')]" position="inside">
+                <li t-if="page_name == 'schools'" class="breadcrumb-item">Schools</li>
+                <li t-if="page_name in ['create_school', 'school_detail', 'edit_school', 'school_students', 'student_details']" class="breadcrumb-item">
+                    <a t-att-href="'/my/school'">Schools</a>
+                </li>
+                <li t-if="page_name == 'create_school'" class="breadcrumb-item">Create School</li>
+                <li t-if="page_name == 'school_detail'" class="breadcrumb-item">
+                    <t t-esc="school.name"/>
+                </li>
+                <li t-if="page_name in ['edit_school', 'school_students', 'student_details']" class="breadcrumb-item">
+                    <a t-attf-href="/my/school/{{school.id}}">
+                        <t t-esc="school.name"/>
+                    </a>
+                </li>
+                <li t-if="page_name == 'edit_school'" class="breadcrumb-item">Edit</li>
+                <li t-if="page_name == 'school_students'" class="breadcrumb-item">Students</li>
+                <li t-if="page_name in ['student_details']" class="breadcrumb-item">
+                    <a t-attf-href="/my/school/{{school.id}}/students">
+                        Students
+                    </a>
+                </li>
+                <li t-if="page_name == 'student_details'" class="breadcrumb-item">
+                    <t t-esc="student.name"/>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="portal_school_list_view_template">
+            <t t-call="portal.portal_layout">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <h1>Schools List</h1>
+                                <div>
+                                    <a href="/my/school/create" class="btn btn-primary">
+                                        <i class="fa fa-plus me-1" /> Create School
+                                    </a>
+                                </div>
+                            </div>
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Code</th>
+                                        <th>Website</th>
+                                        <th>Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="schools" t-as="school">
+                                        <tr>
+                                            <td>
+                                                <a t-attf-href="/my/school/{{school.id}}">
+                                                    <t t-esc="school.name"/>
+                                                </a>
+                                            </td>
+                                            <td><t t-esc="school.school_code"/></td>
+                                            <td><t t-esc="school.website"/></td>
+                                            <td><t t-esc="school.address"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="school_create_template">
+            <t t-call="portal.portal_layout">
+                <div class="container mb-4">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div t-if="created" class="alert alert-success d-flex align-items-center" role="alert" style="padding: 20px; border-radius: 10px;">
+                                    <img src="https://img.icons8.com/ios-filled/50/26e07f/checked--v1.png" alt="Success Icon" class="me-3" style="width: 50px; height: 50px;" />
+                                    <div>
+                                        <h4 class="alert-heading">School Created Successfully!</h4>
+                                        <p>Your new school has been added to the system successfully. You can now proceed with further actions.</p>
+                                    </div>
+                            </div>
+                            <div t-if="not created" class="card">
+                                <div class="card-header">
+                                    <h4>Create School</h4>
+                                </div>
+                                <t t-if="error_messages">
+                                    <div class="alert alert-danger m-2">
+                                        <ul>
+                                            <t t-foreach="error_messages" t-as="error">
+                                                <li><t t-esc="error"/></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </t>
+                                <t t-if="success_messages">
+                                    <div class="alert alert-success m-2">
+                                        <ul>
+                                            <t t-foreach="success_messages" t-as="success">
+                                                <li><t t-esc="success"/></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </t>
+                                <div class="card-body">
+                                    <form action="/my/school/create" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">School Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" required="" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="code" class="form-label">School Code</label>
+                                            <input type="text" class="form-control" id="code" name="school_code" required="" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="website" class="form-label">Website</label>
+                                            <input type="text" class="form-control" id="website" name="website" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="logo" class="form-label">Logo</label>
+                                            <input type="file" class="form-control" id="logo" name="logo" />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="school_edit_template">
+            <t t-call="portal.portal_layout">
+                <div class="container mb-4">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div t-if="updated" class="text-center" style="padding: 20px; border-radius: 10px;">
+                                <img src="https://png.pngtree.com/png-vector/20220830/ourmid/pngtree-business-man-greets-with-a-thumbs-up-png-image_6131631.png" alt="Smiling Cartoon with Thumbs Up" style="width: 180px;" />
+                                <h3 class="text-success" style="font-family: 'Arial', sans-serif; margin-top: 15px;">School Updated Successfully!</h3>
+                                <p class="text-muted" style="font-family: 'Arial', sans-serif;">Your school details have been updated successfully. You can now proceed with further actions.</p>
+                            </div>
+
+                            <div t-if="not updated" class="card">
+                                <div class="card-header">
+                                    <h4>Edit School</h4>
+                                </div>
+                                <t t-if="error_messages">
+                                    <div class="alert alert-danger m-2">
+                                        <ul>
+                                            <t t-foreach="error_messages" t-as="error">
+                                                <li><t t-esc="error"/></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </t>
+                                <t t-if="success_messages">
+                                    <div class="alert alert-success m-2">
+                                        <ul>
+                                            <t t-foreach="success_messages" t-as="success">
+                                                <li><t t-esc="success"/></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </t>
+                                <div class="card-body">
+                                    <form t-attf-action="/my/school/edit/{{school.id}}" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="name" name="name" t-att-value="school.name" required="" />
+                                            <label for="name">School Name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="code" name="school_code" t-att-value="school.school_code" required="" />
+                                            <label for="code">School Code</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="address" name="address" t-att-value="school.address" />
+                                            <label for="address">Address</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="email" name="email" t-att-value="school.email" />
+                                            <label for="email">Email</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="website" name="website" t-att-value="school.website" />
+                                            <label for="website">Website</label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="logo">Logo</label>
+                                            <input type="file" class="form-control" id="logo" name="logo" />
+
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="portal_school_details_view_template" inherit_id="portal.portal_sidebar">
+            <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+                <t t-if="page_name == 'school_detail'">
+                    <section >
+                        <div class="container py-5">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card mb-4">
+                                        <div class="card-body text-center">
+                                            <t t-if="school.logo">
+                                                <img t-att-src="image_data_uri(school.logo)"
+                                                     class="img-fluid" style="max-width: 150px;"/>
+                                            </t>
+                                            <h5 class="my-3">
+                                                <span t-esc="school.name"/>
+                                            </h5>
+                                            <p class="text-muted mb-1">
+                                                <span t-esc="school.email"/>
+                                            </p>
+                                            <p class="text-muted mb-4">
+                                                <span t-esc="school.website"/>
+                                            </p>
+                                            <div class="d-flex justify-content-center mb-2">.
+                                                <a t-attf-href="/my/school/{{school.id}}/students"
+                                                   class="btn btn-primary">
+                                                    Students
+                                                </a>
+                                                <a type="button"
+                                                   class="btn btn-outline-primary ms-1"
+                                                   t-attf-href="/my/school/report/{{school.id}}"
+                                                >
+                                                    <i class="fa fa-download me-2"/> Report
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">School Name</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="school.name"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">School Email</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-if="school.email" t-esc="school.email"/>
+                                                    <p t-if="not school.email" class="text-warning">Empty</p>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Website</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="school.website"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Address</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="school.address"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Contact</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="school.contact"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-2">
+                                <div>
+                                    <a t-attf-href="/my/school/edit/{{school.id}}" class="btn btn-primary">
+                                        <i class="fa fa-edit me-1"/> Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_school_students_view_template">
+            <t t-call="portal.portal_layout">
+                <div class="container">
+                    <t t-call="portal.portal_searchbar">
+                        <t t-set="title">Student</t>
+                    </t>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Students List</h1>
+                            <t t-call="portal.portal_table">
+                                <thead class="bg-dark">
+                                    <tr class="text-white">
+                                        <th>Name</th>
+                                        <th>Roll No</th>
+                                        <th>Standard</th>
+                                        <th>Section</th>
+                                        <th>Age</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="group_students" t-as="students_group">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th colspan="5" t-if="groupby == 'standard' ">
+                                                <span>Standard</span>
+                                                <t t-esc="students_group['standard']"/>
+                                            </th>
+                                            <th colspan="5" t-if="groupby == 'version' ">
+                                                <span>Version</span>
+                                                <t t-esc="students_group['version']"/>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="students_group['students']" t-as="student">
+                                            <tr>
+                                                <td>
+                                                    <a t-attf-href="/my/student/{{student.id}}">
+                                                        <t t-esc="student.name"/>
+                                                    </a>
+                                                </td>
+                                                <td><t t-esc="student.roll_number"/></td>
+                                                <td><t t-esc="student.standard"/></td>
+                                                <td><t t-esc="student.section"/></td>
+                                                <td><t t-esc="'{:.2f}'.format(student.age)"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="student_detailed_view" inherit_id="portal.portal_sidebar">
+            <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+                <t t-if="page_name == 'student_details'">
+                    <section>
+                        <div class="container py-5">
+                            <div class="row">
+                                <!-- Student Image and Basic Info -->
+                                <div class="col-lg-4">
+                                    <div class="card mb-4">
+                                        <div class="card-body text-center">
+                                            <t t-if="student.photo">
+                                                <img t-att-src="image_data_uri(student.photo)"
+                                                     class="rounded-circle img-fluid" style="width: 100%;"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                                     alt="avatar"
+                                                     class="rounded-circle img-fluid" style="width: 150px;"/>
+                                            </t>
+                                            <h5 class="my-3">
+                                                <span t-esc="student.name"/>
+                                            </h5>
+                                            <p class="text-muted mb-1">
+                                                <strong>Roll Number:</strong> <span t-esc="student.roll_number"/>
+                                            </p>
+                                            <p class="text-muted mb-1">
+                                                <strong>Section:</strong> <span t-esc="student.section"/>
+                                            </p>
+                                            <div class="d-flex justify-content-center my-4">
+                                                <a t-attf-href="/my/student/#{student.id}/edit" class="btn btn-primary btn-lg mx-2">
+                                                    <i class="fa fa-edit me-2"/> Edit
+                                                </a>
+                                                <button type="button" class="btn btn-outline-secondary btn-lg mx-2">
+                                                    <i class="fa fa-envelope me-2"/>Message
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Student Detailed Information -->
+                                <div class="col-lg-8">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Full Name</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="student.name"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Age</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="student.age"/> years old
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Standard</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="student.standard"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">Section</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p t-esc="student.section"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

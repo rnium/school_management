@@ -1,0 +1,19 @@
+id,name,age,gender,subject
+teacher_1,John Doe,35,male,Bangla
+teacher_2,Mary Jane,30,female,English
+teacher_3,Franklin D.,25,male,Math
+teacher_4,Elizabeth,28,female,Bangla
+teacher_h_1,Albus Dumbledore,115,male,Science
+teacher_h_2,Minerva McGonagall,85,female,Science
+teacher_h_3,Severus Snape,38,male,Science
+teacher_h_4,Rubeus Hagrid,60,male,Science
+teacher_h_5,Filius Flitwick,70,male,Science
+teacher_h_6,Sybill Trelawney,55,female,Religion
+teacher_h_7,Remus Lupin,36,male,Social Science
+teacher_h_8,Pomona Sprout,65,female,Science
+teacher_h_9,Gilderoy Lockhart,40,male,Social Science
+teacher_h_10,Aurora Sinistra,50,female,Science
+teacher_h_11,Bathsheba Babbling,45,female,Social Science
+teacher_h_12,Cuthbert Binns,200,male,Social Science
+teacher_h_13,Charity Burbage,40,female,Social Science
+teacher_h_14,Quirinus Quirrell,33,male,Social Science

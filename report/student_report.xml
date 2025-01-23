@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="student_report_template" >
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1 style="text-align: center;color: teal;">Academic Transcript</h1>
+                        <div
+                            style="display: flex; justify-content: space-around; margin-bottom: 10px;"
+                        >
+                            <div>
+                                <h2 style="color: gray;" t-esc="student.name"/>
+                                <h4 t-esc="student.school_id.name" style="color: gray"/>
+                            </div>
+                            <div>
+                                <img
+                                        t-att-src="image_data_uri(student.photo)"
+                                        style="width: 100px; height: 100px;"
+                                />
+                            </div>
+                        </div>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td>
+                                    <div>Standard: <span style="color: gray;" t-esc="student.standard"/></div>
+                                    <div>Roll Number: <span style="color: gray;" t-esc="student.roll_number"/></div>
+                                    <div>Section: <span style="color: gray;" t-esc="student.section"/></div>
+                                </td>
+                                <td>
+                                    <div>Version: <span t-esc="student.version"/></div>
+                                    <div>Admission Date: <span t-esc="student.admission_date"/></div>
+                                    <div t-if="student.group">Group: <span t-esc="student.group"/></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Course Code</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                    <th>Result Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="student.result_ids" t-as="result">
+                                    <tr>
+                                        <td><span t-esc="result.course_id.name"/></td>
+                                        <td><span t-esc="result.course_id.code"/></td>
+                                        <td><span t-esc="result.marks"/></td>
+                                        <td><span t-esc="result.grade"/></td>
+                                        <td><span t-esc="result.result_date"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="school_management_student_report_action" model="ir.actions.report">
+            <field name="name">Student Report</field>
+            <field name="model">school_management.student</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">school_management.student_report_template</field>
+            <field name="report_file">school_management.student_report_template</field>
+            <field name="binding_model_id" ref="school_management.model_school_management_student"/>
+            <field name="binding_type">report</field>
+    </record>
+</odoo>

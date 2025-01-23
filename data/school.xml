@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="school_management_hogwarts" model="school_management.school">
+        <field name="name">Hogwarts School of Witchcraft and Wizardry</field>
+        <field name="address">Scotland, United Kingdom</field>
+        <field name="contact">+44 1234 567890</field>
+        <field name="email">saiful.islam@bjitacademy.com</field>
+        <field name="website">www.hogwarts.edu</field>
+        <field name="established_date">1990-01-01</field>
+        <field name="school_code">HSW123</field>
+        <field name="logo" type="base64" file="school_management/static/img/hogwarts.jpg"/>
+        <field
+                name="teacher_ids"
+                eval="[(6, 0, [
+                    ref('teacher_h_1'),
+                    ref('teacher_h_2'),
+                    ref('teacher_h_3'),
+                    ref('teacher_h_4'),
+                    ref('teacher_h_5'),
+                    ref('teacher_h_6'),
+                    ref('teacher_h_7'),
+                    ref('teacher_h_8'),
+                    ref('teacher_h_9'),
+                    ref('teacher_h_10'),
+                    ref('teacher_h_11'),
+                    ref('teacher_h_12'),
+                    ref('teacher_h_13'),
+                    ref('teacher_h_14'),
+                ])]"
+        />
+        <field
+                name="student_ids"
+                eval="[(6, 0, [
+                    ref('student_h_1'),
+                    ref('student_h_2'),
+                    ref('student_h_3'),
+                    ref('student_h_4'),
+                    ref('student_h_5'),
+                    ref('student_h_6'),
+                    ref('student_h_7'),
+                    ref('student_h_8'),
+                    ref('student_h_9'),
+                    ref('student_h_10'),
+                    ref('student_h_11'),
+                    ref('student_h_12'),
+                    ref('student_h_13'),
+                    ref('student_h_14'),
+                    ref('student_h_15'),
+                    ref('student_h_16'),
+                    ref('student_h_17'),
+                    ref('student_h_18'),
+                    ref('student_h_19'),
+                    ref('student_h_20'),
+                ])]"
+        />
+        <field
+                name="playground_ids"
+                eval="[(6, 0, [
+                    ref('playground_h_1'),
+                    ref('playground_h_2'),
+                    ref('playground_h_3'),
+                    ref('playground_h_4'),
+                    ref('playground_h_5'),
+                ])]"
+        />
+    </record>
+
+    <record id="school_management_dhaka_collegiate" model="school_management.school">
+        <field name="name">Dhaka Collegiate School</field>
+        <field name="address">Dhaka, Bangladesh</field>
+        <field name="contact">+880 1711 223344</field>
+        <field name="email">info@dhakacollegiate.edu</field>
+        <field name="website">www.dhakacollegiate.edu</field>
+        <field name="established_date">1835-06-01</field>
+        <field name="school_code">DCS001</field>
+    </record>
+
+    <record id="school_management_viqarunnisa" model="school_management.school">
+        <field name="name">Viqarunnisa Noon School and College</field>
+        <field name="address">Bailey Road, Dhaka, Bangladesh</field>
+        <field name="contact">+880 1711 445566</field>
+        <field name="email">info@viqarunnisa.edu</field>
+        <field name="website">www.viqarunnisa.edu</field>
+        <field name="established_date">1952-07-01</field>
+        <field name="school_code">VNSC002</field>
+    </record>
+
+    <record id="school_management_stgregory" model="school_management.school">
+        <field name="name">St. Gregory's High School</field>
+        <field name="address">Lalbagh, Dhaka, Bangladesh</field>
+        <field name="contact">+880 1711 667788</field>
+        <field name="email">info@stgregory.edu</field>
+        <field name="website">www.stgregory.edu</field>
+        <field name="established_date">1882-01-01</field>
+        <field name="school_code">SGHS003</field>
+    </record>
+
+    <record id="school_management_notredame" model="school_management.school">
+        <field name="name">Notre Dame College</field>
+        <field name="address">Motijheel, Dhaka, Bangladesh</field>
+        <field name="contact">+880 1711 889900</field>
+        <field name="email">info@notredame.edu</field>
+        <field name="website">www.notredame.edu</field>
+        <field name="established_date">1949-07-01</field>
+        <field name="school_code">NDC004</field>
+    </record>
+
+    <record id="school_management_maple_leaf" model="school_management.school">
+        <field name="name">Maple Leaf International School</field>
+        <field name="address">Dhanmondi, Dhaka, Bangladesh</field>
+        <field name="contact">+880 1711 556677</field>
+        <field name="email">info@mapleleaf.edu</field>
+        <field name="website">www.mapleleaf.edu</field>
+        <field name="established_date">1972-09-01</field>
+        <field name="school_code">MLIS006</field>
+    </record>
+
+    <record id="school_management_chittagong_collegiate" model="school_management.school">
+        <field name="name">Chittagong Collegiate School</field>
+        <field name="address">Chittagong, Bangladesh</field>
+        <field name="contact">+880 1711 334455</field>
+        <field name="email">info@chittagongcollegiate.edu</field>
+        <field name="website">www.chittagongcollegiate.edu</field>
+        <field name="established_date">1836-05-01</field>
+        <field name="school_code">CCS007</field>
+    </record>
+
+    <record id="school_management_comilla_victoria" model="school_management.school">
+        <field name="name">Comilla Victoria Government College</field>
+        <field name="address">Comilla, Bangladesh</field>
+        <field name="contact">+880 1711 778899</field>
+        <field name="email">info@comillavictoria.edu</field>
+        <field name="website">www.comillavictoria.edu</field>
+        <field name="established_date">1899-08-01</field>
+        <field name="school_code">CVGC008</field>
+    </record>
+
+    <record id="school_management_jessore_mmc" model="school_management.school">
+        <field name="name">Jessore Michael Madhusudan College</field>
+        <field name="address">Jessore, Bangladesh</field>
+        <field name="contact">+880 1711 223322</field>
+        <field name="email">info@jessoremmc.edu</field>
+        <field name="website">www.jessoremmc.edu</field>
+        <field name="established_date">1941-02-01</field>
+        <field name="school_code">JMMC009</field>
+    </record>
+
+    <record id="school_management_syedpur" model="school_management.school">
+        <field name="name">Syedpur Cantonment Public School and College</field>
+        <field name="address">Syedpur, Nilphamari, Bangladesh</field>
+        <field name="contact">+880 1711 889944</field>
+        <field name="email">info@syedpurcantonment.edu</field>
+        <field name="website">www.syedpurcantonment.edu</field>
+        <field name="established_date">1980-03-01</field>
+        <field name="school_code">SCPSC010</field>
+    </record>
+</odoo>

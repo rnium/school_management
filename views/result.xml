@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="school_management_result_tree" model="ir.ui.view">
+        <field name="name">school_management.result.tree</field>
+        <field name="model">school_management.result</field>
+        <field name="arch" type="xml">
+            <tree string="Results">
+                <field name="student_id"
+                    context="{'active_test': False}"
+                />
+                <field name="course_id"/>
+                <field name="marks"/>
+                <field name="grade"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="school_management_result_tree_v2" model="ir.ui.view">
+        <field name="name">school_management.result.tree.v2</field>
+        <field name="model">school_management.result</field>
+        <field name="arch" type="xml">
+            <tree string="Results">
+                <field name="student_id"
+                    context="{'active_test': False}"
+                />
+                <field name="course_id"/>
+                <field name="grade"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="school_management_result_form" model="ir.ui.view">
+        <field name="name">school_management.result.form</field>
+        <field name="model">school_management.result</field>
+        <field name="arch" type="xml">
+            <form string="Result">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                        </group>
+                        <group>
+                            <field name="marks"/>
+                            <field name="grade"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_management_result_form_v2" model="ir.ui.view">
+        <field name="name">school_management.result.form.v2</field>
+        <field name="model">school_management.result</field>
+        <field name="arch" type="xml">
+            <form string="Result">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                        </group>
+                        <group>
+                            <field name="marks"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_management_result_action" model="ir.actions.act_window">
+        <field name="name">Result</field>
+        <field name="res_model">school_management.result</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">
+            {
+                'tree_view_ref': 'school_management.school_management_result_tree_v2'
+                'form_view_ref': 'school_management.school_management_result_form_v2'
+            }
+        </field>
+    </record>
+</odoo>

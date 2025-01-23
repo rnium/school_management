@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="school_management_parent_view_form" model="ir.ui.view">
+            <field name="name">school_management.parent.view.form</field>
+            <field name="model">school_management.parent</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="occupation" />
+                            </group>
+                            <group>
+                                <field
+                                    name="contact"
+                                    context="{'show_address': True}"
+                                />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="school_management_parent_action" model="ir.actions.act_window">
+            <field name="name">Parent</field>
+            <field name="res_model">school_management.parent</field>
+<!--            <field name="binding_model_id" ref="school_management.model_school_management_student"/>-->
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

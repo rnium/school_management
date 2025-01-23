@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="school_management_stats_wizard" model="ir.ui.view">
+        <field name="name">school.management.stats.wizard</field>
+        <field name="model">student.weight.wizard</field>
+        <field name="arch" type="xml">
+            <form string="School Stats">
+                <group>
+                    <field name="standard"/>
+                </group>
+                <header>
+                    <button name="action_compute_total_weight_in_loop" string="Run Loop" type="object" />
+                    <button name="action_compute_total_weight_in_read_group" string="Run Read Group" type="object" class="btn-primary"/>
+                </header>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_management_weight_wizard_action" model="ir.actions.act_window">
+        <field name="name">Student Weight</field>
+        <field name="res_model">student.weight.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="school_management_stats_wizard"/>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Chomsky';
+    url(/school_management/static/fonts/chomsky.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Jersey';
+    url(/school_management/static/fonts/Jersey10-Regular.ttf) format('truetype');
+}
+
+.title {
+    font-family: 'Jersey';
+    font-size: 20px;
+    color: blue;
+}

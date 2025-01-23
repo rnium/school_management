@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <link href="/school_management/static/src/less/fonts.css" rel="stylesheet" type="text/css"/>-->
+<!--        </xpath>-->
+<!--    </template>-->
+    <template id="certificate_layout">
+        <div class="header">
+            <div class="text-center report_header_style" style="report_header_style;">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <h1 class="chomsky" style="font-family: Chomsky;text-align: center; font-size: 3rem;" t-esc="school.name" />
+                        <h4 style="text-align: center;" t-esc="school.address" />
+                    </div>
+                </div>
+                <div>
+                    <img t-att-src="image_data_uri(school.logo)" style="max-width: 120px; max-height: 120px;" />
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <div class="row">
+                <t t-raw="0"/>
+            </div>
+        </div>
+    </template>
+
+    <record id="report_certificate_paper_format" model="report.paperformat">
+        <field name="name">Certificate A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">20</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">5</field>
+        <field name="dpi">90</field>
+    </record>
+</odoo>
