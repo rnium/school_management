@@ -1,2 +1,6 @@
 id,student_id:id,course_id:id,grade,marks
 result_1,student_16,course_1,a+,80
+result_2,student_16,course_2,a,70
+result_3,student_16,course_3,a,75
+result_4,student_16,course_4,a+,85
+result_5,student_16,course_5,a+,90

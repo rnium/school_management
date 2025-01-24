@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="student_results_table" name="Student Results Table">
+        <div class="table-container" style="margin: 20px;">
+            <h3>Results Report</h3>
+            <p><strong>Student Name:</strong> <t t-esc="data['student'].name"/></p>
+            <p><strong>Student ID:</strong> <t t-esc="data['student'].id"/></p>
+
+            <table class="table table-bordered table-striped" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead style="background-color: #f4f4f4;">
+                    <tr>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Course</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Marks</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Grade</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Result Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="data['results']" t-as="result">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <t t-esc="result['course'].name"/>
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <t t-esc="result['marks']"/>
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <t t-esc="result['grade']"/>
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <t t-esc="result['result_date']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+</odoo>

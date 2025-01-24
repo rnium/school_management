@@ -33,6 +33,8 @@
                 action="school_management_library_action" sequence="40"/>
     <menuitem id="school_management_student_weight_menu" name="Student Weight" parent="school_management_menu"
                 action="school_management_weight_wizard_action" sequence="50"/>
+    <menuitem id="school_management_student_report_menu" name="Student Report" parent="school_management_menu"
+                action="student_report_wizard_action" sequence="51"/>
     <menuitem id="school_management_setting_menu" name="Settings" parent="school_management_menu"
                 action="school_management_setting_action" sequence="60"/>
 </odoo>
