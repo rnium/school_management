@@ -127,6 +127,10 @@ class Student(models.Model):
             'target': 'current',
         }
 
+    def show_update_popup(self):
+        action = self.env.ref('school_management.student_data_update_wizard_action').read()[0]
+        return action
+
     # def write(self, vals):
     #     if results:=vals.get('result_ids'):
     #         num_courses = len(results)

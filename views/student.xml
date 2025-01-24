@@ -9,6 +9,7 @@
                     <field name="standard"/>
                     <field name="age" avg="Average Age"/>
                     <field name="graduated" widget="boolean" />
+                    <field name="weight_in_kg"/>
                 </tree>
             </field>
         </record>
@@ -258,6 +259,17 @@
             <field name="state">code</field>
             <field name="code">
                 action = records.mark_as_graduated()
+            </field>
+        </record>
+
+        <record id="student_data_update_server_action" model="ir.actions.server">
+            <field name="name">Update Weight</field>
+            <field name="model_id" ref="school_management.model_school_management_student"/>
+            <field name="binding_model_id" ref="school_management.model_school_management_student"/>
+            <field name="state">code</field>
+            <field name="binding_view_types">list</field>
+            <field name="code">
+                action = model.show_update_popup()
             </field>
         </record>
 

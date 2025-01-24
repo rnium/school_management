@@ -46,6 +46,7 @@
         'views/library.xml',
         'views/stats_wizard.xml',
         'views/parent_view.xml',
+        'wizard/student_data_update_wizard_view.xml',
         'wizard/student_report_wizard_views.xml',
         'wizard/templates.xml',
         'views/menus.xml',
