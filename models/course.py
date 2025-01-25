@@ -60,3 +60,17 @@ class Course(models.Model):
             vals['student_ids'] += student_commands
         # Call the super method to perform the write operation
         return super(Course, self).write(vals)
+
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        contexts = self.env.context
+        if standard:=contexts.get('standard'):
+            args = args or []
+            args += [('standard', '=', standard)]
+        result_ids = contexts.get('result_ids', [])
+        if result_ids:
+            results_recs = self.env['school_management.result'].browse(result_ids)
+            course_ids = results_recs.mapped('course_id').ids
+            args = args or []
+            args += [('id', 'not in', course_ids)]
+        return super(Course, self).name_search(name, args, operator, limit)

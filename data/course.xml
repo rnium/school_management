@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="course_1" model="school_management.course">
-        <field name="name">Bangla</field>
+    <record id="course_4" model="school_management.course">
+        <field name="name">Bangla 1</field>
         <field name="code">BAN1</field>
         <field name="standard">1</field>
         <field name="teacher_ids" eval="[(4, ref('teacher_1')), (4, ref('teacher_4'))]"/>

@@ -82,7 +82,7 @@
                             <page string="Results">
                                 <field name="result_ids">
                                     <tree string="Results" editable="bottom">
-                                        <field name="course_id"/>
+                                        <field name="course_id" context="{'result_ids': parent.result_ids, 'standard': parent.standard}"/>
                                         <field name="marks"/>
                                         <field name="grade"/>
                                     </tree>
