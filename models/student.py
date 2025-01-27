@@ -48,6 +48,12 @@ class Student(models.Model):
             }
         }
 
+    def generate_excel_report(self):
+        self.ensure_one()
+        report_wizard = self.env['student.report.wizard'].create({'student_id': self.id})
+        return report_wizard.generate_excel_report()
+
+
 
 
     @api.onchange('weight_in_kg')

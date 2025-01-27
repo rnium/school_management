@@ -54,6 +54,7 @@
                       disable_autofocus="true">
                     <header>
                         <button name="send_birthday_email" string="Send Birthday Wish" type="object" class="btn-primary"/>
+                        <button name="generate_excel_report" string="Excel Report" type="object" class="oe_highlight ms-1"/>
                     </header>
                     <sheet>
                         <group>
